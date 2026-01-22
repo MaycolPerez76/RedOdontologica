@@ -6,11 +6,10 @@ public abstract class Persona {
     private String nombre;
     private int telefono;
 
-    // Constructor vacío
+
     public Persona() {
     }
 
-    // Constructor con parámetros
     public Persona(int id, String nombre, int telefono) {
         this.id = id;
         this.nombre = nombre;
