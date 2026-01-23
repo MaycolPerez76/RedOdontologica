@@ -1,4 +1,5 @@
-package com.odontologia.model;
+package model;
+
 
 public abstract class Persona {
 

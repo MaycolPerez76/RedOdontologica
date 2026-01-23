@@ -1,4 +1,5 @@
-package com.odontologia.model;
+package model;
+
 
 public class Odontologo extends Persona {
 
