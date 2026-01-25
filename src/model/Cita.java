@@ -1,4 +1,4 @@
-package com.odontologia.model;
+package model;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -10,7 +10,6 @@ public class Cita {
     private String motivo;
     private EstadoCita estado;
     private LocalTime horaLlegadaPaciente;
-    private CitaView citaView;
 
     // Constructor vacío
     public Cita() {
@@ -67,26 +66,43 @@ public class Cita {
     }
 
     // Métodos del diagrama
-    public void confirmar() {
-        System.out.println("Método confirmar no implementado");
+public void confirmar() {
+    // Si ya está cancelada, no se puede confirmar
+    if (this.estado == EstadoCita.CANCELADA) {
+        System.out.println("Error: La cita no se puede confirmar porque está CANCELADA.");
+    } else {
+        this.estado = EstadoCita.CONFIRMADA;
+        System.out.println("Cita confirmada exitosamente.");
+    }
+}
+
+  public void cancelar() {
+    this.estado = EstadoCita.CANCELADA;
+    System.out.println("La cita ha sido marcada como CANCELADA.");
+}
+
+
+public void reprogramar(LocalDate nuevaFecha, LocalTime nuevaHora) {
+    this.fecha = nuevaFecha;
+    this.hora = nuevaHora;
+    this.estado = EstadoCita.PENDIENTE; // Al reprogramar, vuelve a estar pendiente
+    System.out.println("Cita reprogramada para: " + nuevaFecha + " a las " + nuevaHora);
+}
+public void registrarLlegada(LocalTime horaLlegada) {
+    this.horaLlegadaPaciente = horaLlegada;
+}
+
+public void evaluarAsistencia() {
+    if (this.horaLlegadaPaciente != null) {
+        this.estado = EstadoCita.ATENDIDA;
+        System.out.println("Asistencia evaluada: El paciente asistió.");
+    } else {
+        this.estado = EstadoCita.AUSENTE;
+        System.out.println("Asistencia evaluada: Paciente AUSENTE.");
     }
 
-    public void cancelar() {
-        System.out.println("Método cancelar no implementado");
-    }
 
-    public void reprogramar(LocalDate nuevaFecha, LocalTime nuevaHora) {
-        System.out.println("Método reprogramar no implementado");
-    }
-
-    public void registrarLlegada(LocalTime horaLlegada) {
-        System.out.println("Método registrarLlegada no implementado");
-    }
-
-    public void evaluarAsistencia() {
-        System.out.println("Método evaluarAsistencia no implementado");
-    }
-
+}
     @Override
     public String toString() {
         return "Cita{" +

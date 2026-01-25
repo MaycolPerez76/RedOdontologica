@@ -1,4 +1,4 @@
-package com.odontologia.model;
+package model;
 
 public enum EstadoCita {
     PENDIENTE,

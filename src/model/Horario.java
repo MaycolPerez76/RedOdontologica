@@ -1,4 +1,4 @@
-package com.odontologia.model;
+package model;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -47,13 +47,19 @@ public class Horario {
 
     // Métodos del diagrama
     public void marcarOcupado() {
-        System.out.println("Método marcarOcupado no implementado");
+        if (disponible = false) {
+          System.out.println("No se puede marcar porque ya esta ocupado");
+        } else {
         this.disponible = false;
+        }  
     }
 
     public void marcarDisponible() {
-        System.out.println("Método marcarDisponible no implementado");
+        if (disponible = false) {
+             System.out.println("Campo ocupado");
+        } else {
         this.disponible = true;
+        }
     }
 
     @Override
